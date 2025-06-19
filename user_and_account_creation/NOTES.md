@@ -117,3 +117,28 @@
     - `type -a [`
     - `ls -l /usr/bin/[`
     - 
+
+
+## Exit Status, Return Codes, String Test conditionals, More special variables
+
+- Concept of `DRY`(Don't Repeat Yourself)
+
+- By convention when a script or a program executes successfully, it returns an exit status of zero. If it doesn't execute successfully for whatever reason, it returns a non-zero exit status.
+
+- `${?}` is a special variable in bash. It holds the exit status of the most recently exeuted command.
+
+- `=` is used for exact match inside `if` statements.
+- `==` is used as a pattern and pattern matching is performed.
+
+- If you don't specify the exit status or exit code, the exit status of the most recently previously executed command will be used as the exit status of your script.
+
+- Commands
+    - man useradd
+    - type -a exit
+    - help exit
+    - help test
+    - id -nx         // successful
+    - echo "${?}"    // 0
+    - id -unx        // x is not a valid option
+    - echo "${?}"    // 1
+    - 
