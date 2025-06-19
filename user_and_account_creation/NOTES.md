@@ -68,3 +68,52 @@
     - man uptime
     - cat luser-demo01.sh
     - `# Diplay Hello`
+
+
+## Special Variables, Pseudocode, Command Substitution, if Statement, Conditionals
+
+- UID is a special preset variable.
+- The only time EUID will be different from UID is in the case of a set UID script. When a file has a set UID permission set on it, the file actually gets executed as the owner of the file, no matter what user is executing the file. However it is rarely seen, Modern linux systems, for security reasons, do not allow scripts to be set UID.
+
+- EUID and UID are Shell Variables under the bash man page.
+- Fields within square brackets are optional.
+    `id [OPTION]... [USER]`
+    - `...` also called ellipsis means you can specify multiple options.
+
+- semicolon `;` is just a command separator.
+
+- Older style syntax: 
+    ```bash
+    USER_NAME=`id -un`  # Older Style
+    USER_NAME=$(id -un) # Modern Syntax
+    ```
+
+- if statement syntax: NOTE: spaces are very important  
+    ```bash
+    if [[ expression ]]
+    then
+        # do something
+    else
+        # do other thing
+    fi
+    ```
+
+    - This type of checking is called idiotic checking, and it's to help people from doing idiotic things. Other people call it sanity checking. By the way, it's a good idea to check for any requirements in your shell script. 
+    
+    - If you know something that is required for the script to work properly, check for it. Never assume things are just gonna be the way that you want them to be. For example, if a script adds users and adding users requires root privileges, then check for root privileges. Don't assume that the user knows that they need to execute it with root privileges.
+
+
+- Commands
+    - man bash
+    - search for UID inside bash using `/UID`
+    - type -a id
+    - man id
+    - whoami
+    - man whoami
+    - `type -a [[`
+    - `help [[`
+    - type -a test
+    - man test | less
+    - `type -a [`
+    - `ls -l /usr/bin/[`
+    - 
