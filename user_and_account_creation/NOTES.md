@@ -203,4 +203,6 @@
         - /-m
         - /CONFIGURATION
     - cat /etc/login.defs
+    - `su - username`      # to login to the new user
+    - man bash -> search for host
     - 
