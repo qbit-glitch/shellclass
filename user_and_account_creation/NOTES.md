@@ -142,3 +142,65 @@
     - id -unx        // x is not a valid option
     - echo "${?}"    // 1
     - 
+
+
+## Reading Standard Input, Creating Accounts, Username conventions, More quoting
+
+- One way to get input from the user is by using the `readshell` builtin command. Another way to get input from users is to have them supply information on the command line as arguments to your script.
+
+- We can use `help` only for builtin shell commands. For all other commands use `man` to open the man pages.
+
+- 3 default inputs and outputs
+    - standard input
+    - standard output
+    - standard error
+
+- By default, standard input comes from the keyboard and standard output and standard error are displayed to the screen.
+
+- `sudo su - dougstamper` : tells su to start with an environment similar to that of a real login and also we can use `su -l` to get the same experience. `su - ` or `su -l` will start a login shell.
+
+- `ps -ef` : to show every process. it will not display the username fully if the username is more than 8 characters because historically usernames were limited to 8 characters.
+
+- usernames are case sensitive. By convention, usernames are all in lowercase. We cannot include any special characters in usernames however we can use numbers.
+
+- `useradd` options:
+    - `-c`: it's a comment and it allows for any string. Generally it's a short description of the login and historically it's been used for a person's name. If the account is not for a person, then put the name of the application that's going to use to account.
+
+    - `-m` or `--create-home`: 
+
+    - Keep in mind that when you are writing shell scripts that these default configurations (like CREATE_HOME) may vary among different systems. So if you want to ensure that a user home directory gets created, then use the `-m` flag, then you don't have to depend on the external configuration file.
+
+- Putting something in quotes in the terminal, it gets treated as a single argument or a single item and not separate arguments or separate items.
+
+- By default `passwd` command will prompt you to enter a new password for your account.
+
+- When we use a pipe symbol on a command line, it means take the standard output from the preceding command, the command that goes before the pipe and pass it as the standard input to the following command or the command that comes after the pipe. If the first command displays error messages those will not be passed to the second command. Those error messages are called standard error output.
+
+- we will use `--stdin` option to set the password.
+
+- `su - username`: to change the user
+
+- `read`: shell builtin command which reads one line of the standard input and stores it into a variable. From there we look at the 
+
+- `useradd` command: 
+    - -c option allows you to specify a comment for the account you are creating.
+    - -m option forces the creation of a home directory when creating an account 
+
+- programmatically supply the password to the passwd command by piping the output of the echo into the `passwd` command using the --stdin option.
+
+- Force a password reset for an account by using `passwd` with a -e option followed by a username.
+
+- Commands:
+    - type read
+    - type -a read
+    - help read | less
+    - read -p 'Type Something: ' THING     // THING -> variable
+    - man useradd
+    - sudo useradd dougstamper
+    - sudo su - dougstamper 
+    - ps -ef
+    - man useradd
+        - /-m
+        - /CONFIGURATION
+    - cat /etc/login.defs
+    - 
